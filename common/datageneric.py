@@ -5,7 +5,7 @@ class Datas:
 
     STRING_CONECTION=('Driver={ODBC Driver 17 for SQL Server};'
                         'Server=192.168.1.6;'
-                        'Database=PQA01;'
+                        'Database=PQA;'
                         'UID=sa;'
                         'PWD=123;')
     LIMIT=500 
