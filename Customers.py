@@ -1,6 +1,7 @@
 from scraper import crud_customers
-
-cursor= crud_customers.CrudCustomer.GetCustomers(2)
+page:int
+page=2
+cursor= crud_customers.CrudCustomer.GetCustomers(page)
 cnRow=0 
 row = cursor.fetchone() 
 while row:   
