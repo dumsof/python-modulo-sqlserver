@@ -10,7 +10,7 @@ class CrudCxcAbonos:
                         ',ID_TasaIVA,PorcentajeIVA,Importe,IVA,RetencionISR,RetencionIVA,TTotal,Observaciones,ID_UsuarioAlta,RegistroAlta,ID_UsuarioCambio '
                         ',RegistroCambio,UI_CXCAbono,RetencionIEPS,IEPS,ID_CXCCargoFactura,ID_RU_CXCAbonoFactura,ID_CFD,EsCancelacion,Bloqueado,ISH,PorcentajeISH '
                         'FROM Facturacion.CXCAbonos '
-                        'ORDER BY ID_RU_CXCAbono ASC' +             
+                        'ORDER BY ID_RU_CXCAbono ASC ' +             
                datageneric.Datas.GetPagination(skip))  
        
         return cursor  

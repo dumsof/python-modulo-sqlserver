@@ -2,9 +2,7 @@ import pyodbc
 from common import datageneric
 
 class CrudCustomer:
-    def __init__(self):
-            print("in init")
-
+   
     def GetCustomers(skip):
         conn= pyodbc.connect(datageneric.Datas.STRING_CONECTION)
         cursor= conn.cursor()
