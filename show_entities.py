@@ -19,12 +19,15 @@ class ShowEntities:
 
 
 from scraper import crud_customers,crud_cxcabonos
-
-page:int
-#page=2
-#cursorCustomers= crud_customers.CrudCustomer.GetCustomers(page)
-#ShowEntities.ShowData(cursorCustomers)
-page=74
-cursorCxcAbonos=crud_cxcabonos.CrudCxcAbonos.GetCxcAbonos(page)
 objShow=ShowEntities()
-objShow.ShowData(cursorCxcAbonos)
+page:int
+page=1
+processDate='' 
+currentDateCustomer='2018-12-31 18:10:00'
+cursorCustomers= crud_customers.CrudCustomer.GetCustomers(page,processDate,currentDateCustomer)
+objShow.ShowData(cursorCustomers)
+#---------------------------------------------------------------------------------------------
+#page=1
+#cursorCxcAbonos=crud_cxcabonos.CrudCxcAbonos.GetCxcAbonos(page)
+#objShow=ShowEntities()
+#objShow.ShowData(cursorCxcAbonos)
