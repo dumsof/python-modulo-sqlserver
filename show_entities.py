@@ -6,10 +6,15 @@ class ShowEntities:
 
 
     def ShowData(self,cursor):
-        #os.system("cls")
+        os.system("cls")
         print('\n------------------------------------------------------------------------------------------------------------------')
         cnRow=0 
         row = cursor.fetchone() 
+        if str(row)=='None':           
+            print('\nNO EXISTE INFORMACIÓN')
+            print('\n------------------------------------------------------------------------------------------------------------------')
+            return
+
         while row:   
             cnRow = cnRow +1
             print('Reg. {} -> {}'.format(cnRow,row))
