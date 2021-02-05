@@ -1,8 +1,7 @@
 import pyodbc 
 from common import datageneric
 
-class CrudCustomer:
-   
+class CrudCustomer:   
 
   def GetCustomers(skip, processDate, currentDateCustomer):
         objDataGeneric= datageneric.Datas()      
@@ -15,7 +14,3 @@ class CrudCustomer:
                         objDataGeneric.GetPagination(skip))  
        
         return cursor    
-
-
-     
-

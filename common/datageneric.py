@@ -21,4 +21,5 @@ class Datas:
 
     @classmethod
     def GetPagination(self, skip):
-        return 'OFFSET '+repr((skip-1)* self.__limit) + ' ROWS FETCH NEXT ' + repr(self.__limit)+' ROWS ONLY'          
+        return 'OFFSET {0} ROWS FETCH NEXT {1} ROWS ONLY'.format(str((skip-1)* self.__limit), str(self.__limit)) 
+        
