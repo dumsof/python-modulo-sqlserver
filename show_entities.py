@@ -6,21 +6,20 @@ class ShowEntities:
 
 
     def ShowData(self,cursor):
-        os.system("cls")
-        print('\n------------------------------------------------------------------------------------------------------------------')
-        cnRow=0 
-        row = cursor.fetchone() 
-        if str(row)=='None':           
-            print('\nNO EXISTE INFORMACIÓN')
-            print('\n------------------------------------------------------------------------------------------------------------------')
-            return
-
-        while row:   
-            cnRow = cnRow +1
-            print('Reg. {} -> {}'.format(cnRow,row))
-            row = cursor.fetchone()
-        cursor.close()
-        print('------------------------------------------------------------------------------------------------------------------\n')
+         os.system("cls")       
+         print('\n------------------------------------------------------------------------------------------------------------------')
+         cnRow=0 
+         row = cursor.fetchone() 
+         if str(row)=='None':           
+             print('\nNO EXISTE INFORMACIÓN')
+             print('\n------------------------------------------------------------------------------------------------------------------')
+             return
+         while row:   
+             cnRow = cnRow +1
+             print('Reg. {} -> {}'.format(cnRow,row))
+             row = cursor.fetchone()
+         cursor.close()
+         print('------------------------------------------------------------------------------------------------------------------\n')
 
 
 from scraper import crud_customers,crud_cxcabonos
