@@ -3,7 +3,8 @@ from common import datageneric
 
 class CrudCxcAbonos:
    
-    def GetCxcAbonos(skip,processDate, currentDateCustomer):
+    @classmethod
+    def GetCxcAbonos(cls,skip,processDate, currentDateCustomer):
         objDataGeneric= datageneric.Datas()  
         conn= pyodbc.connect(datageneric.Datas.STRING_CONECTION)
         cursor= conn.cursor()

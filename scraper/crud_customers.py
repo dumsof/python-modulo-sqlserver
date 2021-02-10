@@ -3,7 +3,8 @@ from common import datageneric
 
 class CrudCustomer:   
 
-  def GetCustomers(skip, processDate, currentDateCustomer):
+  @classmethod
+  def GetCustomers(cls, skip, processDate, currentDateCustomer):
         objDataGeneric= datageneric.Datas()      
         conn= pyodbc.connect(datageneric.Datas.STRING_CONECTION)
         cursor= conn.cursor()
@@ -12,5 +13,5 @@ class CrudCustomer:
                         objDataGeneric.GetIncrementalInitialLoad(processDate, currentDateCustomer)+
                         "ORDER BY ID_Cliente ASC " + 
                         objDataGeneric.GetPagination(skip))  
-       
+        
         return cursor    
