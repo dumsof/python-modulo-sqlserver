@@ -5,15 +5,30 @@ class CrudCxcAbonos:
    
     @classmethod
     def GetCxcAbonos(cls,skip,processDate, currentDateCustomer):
-        objDataGeneric= datageneric.Datas()  
-        conn= pyodbc.connect(datageneric.Datas.STRING_CONECTION)
-        cursor= conn.cursor()
-        cursor.execute('SELECT ID_RU_CXCAbono,ID_CXCCargo,Consecutivo,ID_CACXC,ProcedenciaDocumento,ConceptoCXC,FechaAbono,ID_Moneda,ValorCambio,ID_ZonaIVA ' 
-                        ',ID_TasaIVA,PorcentajeIVA,Importe,IVA,RetencionISR,RetencionIVA,TTotal,Observaciones,ID_UsuarioAlta,RegistroAlta,ID_UsuarioCambio '
-                        ',RegistroCambio,UI_CXCAbono,RetencionIEPS,IEPS,ID_CXCCargoFactura,ID_RU_CXCAbonoFactura,ID_CFD,EsCancelacion,Bloqueado,ISH,PorcentajeISH '
-                        'FROM Facturacion.CXCAbonos WHERE '+
-                        objDataGeneric.GetIncrementalInitialLoad(processDate, currentDateCustomer)+
-                        'ORDER BY ID_RU_CXCAbono ASC ' +             
-                        datageneric.Datas.GetPagination(skip))  
+        try:
+            objDataGeneric= datageneric.Datas()  
+            conn= pyodbc.connect(datageneric.Datas.STRING_CONECTION)
+            cursor= conn.cursor()
+            cursor.execute('SELECT ID_RU_CXCAbono,ID_CXCCargo,Consecutivo,ID_CACXC,ProcedenciaDocumento,ConceptoCXC,FechaAbono,ID_Moneda,ValorCambio,ID_ZonaIVA ' 
+                            ',ID_TasaIVA,PorcentajeIVA,Importe,IVA,RetencionISR,RetencionIVA,TTotal,Observaciones,ID_UsuarioAlta,RegistroAlta,ID_UsuarioCambio '
+                            ',RegistroCambio,UI_CXCAbono,RetencionIEPS,IEPS,ID_CXCCargoFactura,ID_RU_CXCAbonoFactura,ID_CFD,EsCancelacion,Bloqueado,ISH,PorcentajeISH '
+                            'FROM Facturacion.CXCAbonos WHERE '+
+                            objDataGeneric.GetIncrementalInitialLoad(processDate, currentDateCustomer)+
+                            'ORDER BY ID_RU_CXCAbono ASC ' +             
+                            datageneric.Datas.GetPagination(skip))  
+        
+            return cursor  
+        except Exception as e:
+            exception_message = f"Exception cxcabonos GetCxcAbonos: {e}"
+           
+    @classmethod
+    def GetTopOneCxcAbonos(cls):
+        try:
+            objDataGeneric= datageneric.Datas()  
+            conn= pyodbc.connect(datageneric.Datas.STRING_CONECTION)
+            cursor= conn.cursor()
+            cursor.execute('SELECT TOP 1 ID_RU_CXCAbono FROM Facturacion.CXCAbonos')
+        except Exception as e:
+            exception_message = f"Exception cxcabonos GetTopOneCxcAbonos: {e}"
+    
        
-        return cursor  

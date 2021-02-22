@@ -32,13 +32,13 @@ class ShowEntities:
             currentDateCustomer='2018-12-31 18:10:00'
             while swExistPage:
                 countPage+=1
-                cursorCxcAbonos=crud_customers.CrudCustomer.GetCustomers(countPage,processDate,currentDateCustomer)
-                #print('Cursor numero de fila: ',cursorCxcAbonos.fetchall)
-                fp = open(f'Files\\{countPage}.FileCxcAbonos.csv', 'w')
-                myFile = csv.writer(fp)
+                cursorCxcAbonos=self.getData(countPage,processDate,currentDateCustomer)
+                       
+                file = open(f'Files\\{countPage}.FileCxcAbonos.csv', 'w')
+                myFile = csv.writer(file)               
                 myFile.writerows(cursorCxcAbonos)
-                fp.close()
-                print('Cursor numero de fila: ', cursorCxcAbonos )
+                file.close()            
+                
                 swExistPage=False
                 print('Ejecución',countPage)
         except Exception as e:
@@ -47,6 +47,25 @@ class ShowEntities:
             ##log.error(exception_message)
 
 
+        def testConection():
+            try:    
+                pass
+                #  cursorCxcAbonos=crud_cxcabonos.CrudCxcAbonos.GetTopOneCxcAbonos()
+                #  return currentDateCustomer
+            except Exception as e:
+                exception_message = f"Exception cxcabonos getData: {e}"
+                print(exception_message)
+                ##log.error(exception_message)
+
+
+        def getData(self,countPage,processDate,currentDateCustomer):
+            try:    
+                cursorCxcAbonos=crud_cxcabonos.CrudCxcAbonos.GetCxcAbonos(countPage,processDate,currentDateCustomer)
+                return currentDateCustomer
+            except Exception as e:
+                exception_message = f"Exception cxcabonos getData: {e}"
+                print(exception_message)
+                ##log.error(exception_message)
 
 # from scraper import crud_customers,crud_cxcabonos
 #objShow=ShowEntities()
